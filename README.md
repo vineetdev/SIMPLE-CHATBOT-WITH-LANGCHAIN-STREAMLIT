@@ -70,7 +70,12 @@ This chatbot application provides a user-friendly web interface for interacting 
 
 ### Application Screenshot
 
-The following screenshot demonstrates the chatbot application in action, showing the user interface and a sample interaction:
+The following screenshot demonstrates the chatbot application in action,
+on running the command would get below output
+
+![Chatbot Application output](output.png)
+
+the web user interface and a sample interaction:
 
 ![Chatbot Application Screenshot](screenshot.png)
 
