@@ -5,13 +5,13 @@ A modern, interactive chatbot application built with **LangChain**, **OpenAI GPT
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Usage](#usage)
+- [Technology Stack](#technology-stack)
 - [High-Level Architecture](#high-level-architecture)
 - [Features](#features)
-- [Technology Stack](#technology-stack)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Usage](#usage)
 - [Architecture Details](#architecture-details)
 - [Component Breakdown](#component-breakdown)
 - [Project Structure](#project-structure)
@@ -29,65 +29,65 @@ This chatbot application provides a user-friendly web interface for interacting 
 - **Extensible**: Built on LangChain's modular architecture for easy customization
 - **Best Practices**: Follows LangChain's recommended patterns and conventions
 
-## 🏗️ High-Level Architecture
+## 🎮 Usage
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     User Interface Layer                    │
-│                    (Streamlit Web App)                      │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │  Title: "Chatbot Application using Langchain..."     │   │
-│  │  Input Field: User Question Entry                    │   │
-│  │  Output Display: AI Response                         │   │
-│  └──────────────────────────────────────────────────────┘   │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Application Logic Layer                  │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │  LangChain Expression Language (LCEL) Chain          │   │
-│  │  prompt | llm | output_parser                        │   │
-│  └──────────────────────────────────────────────────────┘   │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-                            ▼
-┌───────────────────────────────────────────────────────────┐
-│                      LangChain Components                 │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
-│  │   Prompt     │  │      LLM     │  │    Output    │     │
-│  │  Template    │→ │   (OpenAI    │→ │   Parser     │     │
-│  │              │  │  GPT-3.5)    │  │              │     │
-│  └──────────────┘  └──────────────┘  └──────────────┘     │
-└───────────────────────────┬───────────────────────────────┘
-                            │
-                            ▼
-┌────────────────────────────────────────────────────────────┐
-│                    External Services Layer                 │
-│  ┌──────────────────────┐  ┌──────────────────────┐        │
-│  │   OpenAI API         │  │  LangChain Tracing   │        │
-│  │  (GPT-3.5-turbo)     │  │  (Observability)     │        │
-│  └──────────────────────┘  └──────────────────────┘        │
-└────────────────────────────────────────────────────────────┘
-```
+### Running the Application
 
-### Architecture Principles
+1. **Activate your virtual environment** (if using one):
+   ```bash
+   # Windows
+   venv\Scripts\activate
+   
+   # macOS/Linux
+   source venv/bin/activate
+   ```
 
-1. **Separation of Concerns**: Clear separation between UI, business logic, and external services
-2. **Modularity**: Each component (prompt, LLM, parser) is independently configurable
-3. **Observability**: Built-in tracing for debugging and monitoring
-4. **Scalability**: LCEL chains can be easily extended with additional components
-5. **Maintainability**: Clean, readable code following LangChain best practices
+2. **Start the Streamlit application**:
+   ```bash
+   streamlit run app.py
+   ```
 
-## ✨ Features
+3. **Access the application**:
+   - The app will automatically open in your default web browser
+   - Default URL: `http://localhost:8501`
 
-- **Interactive Chat Interface**: Clean, responsive web UI built with Streamlit
-- **OpenAI Integration**: Powered by GPT-3.5-turbo for high-quality responses
-- **Prompt Engineering**: Structured prompt template with system and user messages
-- **Output Parsing**: Automatic string parsing for clean response formatting
-- **LangChain Tracing**: Built-in observability for debugging and monitoring
-- **Environment-Based Configuration**: Secure API key management via environment variables
-- **LCEL Chain Composition**: Elegant chain construction using LangChain Expression Language
+### Using the Chatbot
+
+1. **Enter your question** in the text input field
+2. **Press Enter** or wait for the response
+3. **View the AI-generated response** displayed below the input field
+4. **Ask follow-up questions** by entering new queries
+
+### Example Interactions
+
+**Question**: "What is machine learning?"
+
+**Response**: [AI-generated explanation about machine learning]
+
+**Question**: "Explain neural networks in simple terms"
+
+**Response**: [AI-generated explanation about neural networks]
+
+### Application Screenshot
+
+The following screenshot demonstrates the chatbot application in action, showing the user interface and a sample interaction:
+
+![Chatbot Application Screenshot](screenshot.png)
+
+**What the screenshot shows:**
+- **Application Title**: "Chatbot Application using Langchain and OpenAI" displayed prominently
+- **User Input**: Example query "hey what is RAG in Generative AI" entered in the input field
+- **AI Response**: The chatbot provides a concise answer: "RAG stands for Retrieval-Augmented Generation, which is a model that combines retrieval-based and generative-based approaches in natural language processing tasks."
+- **Clean Interface**: Minimalist design with white background and dark gray text for optimal readability
+- **Local Server**: Running on `localhost:8501` as indicated in the browser URL bar
+
+This demonstrates the application's ability to process user queries and provide accurate, informative responses using OpenAI's GPT-3.5-turbo model through LangChain.
+
+> **Note**: If you don't have a screenshot file yet, you can:
+> 1. Run the application: `streamlit run app.py`
+> 2. Take a screenshot of the running application
+> 3. Save it as `screenshot.png` in the `chatbot` directory
+> 4. The image will automatically display in the README
 
 ## 🛠️ Technology Stack
 
@@ -256,6 +256,66 @@ Or using the requirements file:
 pip install -r ../requirements.txt
 ```
 
+## 🏗️ High-Level Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     User Interface Layer                    │
+│                    (Streamlit Web App)                      │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Title: "Chatbot Application using Langchain..."     │   │
+│  │  Input Field: User Question Entry                    │   │
+│  │  Output Display: AI Response                         │   │
+│  └──────────────────────────────────────────────────────┘   │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Application Logic Layer                  │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  LangChain Expression Language (LCEL) Chain          │   │
+│  │  prompt | llm | output_parser                        │   │
+│  └──────────────────────────────────────────────────────┘   │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+                            ▼
+┌───────────────────────────────────────────────────────────┐
+│                      LangChain Components                 │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │   Prompt     │  │      LLM     │  │    Output    │     │
+│  │  Template    │→ │   (OpenAI    │→ │   Parser     │     │
+│  │              │  │  GPT-3.5)    │  │              │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
+└───────────────────────────┬───────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────────┐
+│                    External Services Layer                 │
+│  ┌──────────────────────┐  ┌──────────────────────┐        │
+│  │   OpenAI API         │  │  LangChain Tracing   │        │
+│  │  (GPT-3.5-turbo)     │  │  (Observability)     │        │
+│  └──────────────────────┘  └──────────────────────┘        │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Architecture Principles
+
+1. **Separation of Concerns**: Clear separation between UI, business logic, and external services
+2. **Modularity**: Each component (prompt, LLM, parser) is independently configurable
+3. **Observability**: Built-in tracing for debugging and monitoring
+4. **Scalability**: LCEL chains can be easily extended with additional components
+5. **Maintainability**: Clean, readable code following LangChain best practices
+
+## ✨ Features
+
+- **Interactive Chat Interface**: Clean, responsive web UI built with Streamlit
+- **OpenAI Integration**: Powered by GPT-3.5-turbo for high-quality responses
+- **Prompt Engineering**: Structured prompt template with system and user messages
+- **Output Parsing**: Automatic string parsing for clean response formatting
+- **LangChain Tracing**: Built-in observability for debugging and monitoring
+- **Environment-Based Configuration**: Secure API key management via environment variables
+- **LCEL Chain Composition**: Elegant chain construction using LangChain Expression Language
+
 ## 📦 Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -343,66 +403,6 @@ LANGCHAIN_TRACING_V2=true
 - Use environment-specific configuration for production
 - Rotate API keys regularly
 - Use secret management services for production deployments
-
-## 🎮 Usage
-
-### Running the Application
-
-1. **Activate your virtual environment** (if using one):
-   ```bash
-   # Windows
-   venv\Scripts\activate
-   
-   # macOS/Linux
-   source venv/bin/activate
-   ```
-
-2. **Start the Streamlit application**:
-   ```bash
-   streamlit run app.py
-   ```
-
-3. **Access the application**:
-   - The app will automatically open in your default web browser
-   - Default URL: `http://localhost:8501`
-
-### Using the Chatbot
-
-1. **Enter your question** in the text input field
-2. **Press Enter** or wait for the response
-3. **View the AI-generated response** displayed below the input field
-4. **Ask follow-up questions** by entering new queries
-
-### Example Interactions
-
-**Question**: "What is machine learning?"
-
-**Response**: [AI-generated explanation about machine learning]
-
-**Question**: "Explain neural networks in simple terms"
-
-**Response**: [AI-generated explanation about neural networks]
-
-### Application Screenshot
-
-The following screenshot demonstrates the chatbot application in action, showing the user interface and a sample interaction:
-
-![Chatbot Application Screenshot](screenshot.png)
-
-**What the screenshot shows:**
-- **Application Title**: "Chatbot Application using Langchain and OpenAI" displayed prominently
-- **User Input**: Example query "hey what is RAG in Generative AI" entered in the input field
-- **AI Response**: The chatbot provides a concise answer: "RAG stands for Retrieval-Augmented Generation, which is a model that combines retrieval-based and generative-based approaches in natural language processing tasks."
-- **Clean Interface**: Minimalist design with white background and dark gray text for optimal readability
-- **Local Server**: Running on `localhost:8501` as indicated in the browser URL bar
-
-This demonstrates the application's ability to process user queries and provide accurate, informative responses using OpenAI's GPT-3.5-turbo model through LangChain.
-
-> **Note**: If you don't have a screenshot file yet, you can:
-> 1. Run the application: `streamlit run app.py`
-> 2. Take a screenshot of the running application
-> 3. Save it as `screenshot.png` in the `chatbot` directory
-> 4. The image will automatically display in the README
 
 ## 🔍 Architecture Details
 
@@ -567,8 +567,6 @@ os.environ["LANGCHAIN_PROJECT"] = os.getenv("LANGCHAIN_PROJECT")
 chatbot/
 │
 ├── app.py                 # Main application file (OpenAI version)
-├── locallama.py          # Alternative version using Ollama
-├── trial.ipynb           # Jupyter notebook for experimentation
 └── README.md             # This file
 
 ../
